@@ -8,6 +8,7 @@ import pandas as pd
 DB_NAME = "World_Economies.db"
 TABLE_NAME = "Countries_by_GDP"
 
+# GDP가 1000억 달러(100B USD) 이상인 국가 목록을 조회
 def query_gdp_over_100(db_name):
     conn = sqlite3.connect(db_name)
 
@@ -24,9 +25,11 @@ def query_gdp_over_100(db_name):
     print("\n=== GDP >= 100B USD ===")
     print(df)
 
+# 대륙별로 GDP 상위 5개 국가의 평균 GDP를 계산
 def query_region_top5_avg_gdp(db_name):
     conn = sqlite3.connect(db_name)
 
+    #  CTE + 윈도우 함수(ROW_NUMBER) 활용
     query = """
     WITH ranked AS (
         SELECT
@@ -57,6 +60,7 @@ def query_region_top5_avg_gdp(db_name):
     print("\n=== Region별 TOP 5 국가 평균 GDP (USD Billion) ===")
     print(df)
 
+# 국가-지역 매핑 테이블 생성, 데이터 넣어줘야 한다. 
 def query_country_region(db_name):
     conn = sqlite3.connect(db_name)
     query = """
