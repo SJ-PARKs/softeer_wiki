@@ -1,1 +1,5 @@
 missions/W2/M5/*.csv
+
+# macOS Finder metadata
+.DS_Store
+**/.DS_Store
